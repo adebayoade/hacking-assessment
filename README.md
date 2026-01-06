@@ -2,9 +2,8 @@
 
 #### Liberty and Click
 
-Start Date: 2025-12-31
+Start Date: 2025-12-1
 End Date: 2026-01-02
-
 Completed: Yes
 
 Contains the screenshots of the Liberty and Click hacking assessment.
